@@ -1,6 +1,6 @@
 ## Components Development Boilerplate
 
-Simple javascript standalone component develop boilerplate:
+Simple javascript standalone component development boilerplate:
 
 - Rollup
 - Postcss

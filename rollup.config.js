@@ -9,9 +9,9 @@ import simplevars from 'postcss-simple-vars';
 import nested from 'postcss-nested';
 import cssnext from 'postcss-cssnext';
 import cssnano from 'cssnano';
+import packagejson from './package.json';
 
 export default {
-
   entry: 'bin/main.js',
 
   output: {
@@ -20,24 +20,17 @@ export default {
   },
 
   plugins: [
-
-    (process.env.NODE_ENV === 'production' && uglify()),
-
+    process.env.NODE_ENV === 'production' && uglify(),
     postcss({
-      extensions: [ '.css' ],
-      plugins: [
-        simplevars(),
-        nested(),
-        cssnext({ warnForDuplicates: false, }),
-        cssnano(),
-      ],
+      extensions: ['.css'],
+      plugins: [simplevars(), nested(), cssnext({ warnForDuplicates: false }), cssnano()],
     }),
 
     replace({
       exclude: 'node_modules/**',
       ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+      PROJECT_NAME: JSON.stringify(packagejson.name),
     }),
-
 
     // eslint({
     //   exclude: [
@@ -47,14 +40,9 @@ export default {
 
     babel({
       exclude: 'node_modules/**',
-      presets: [
-        ['env', { modules: false }]
-      ],
-      plugins: [
-        'external-helpers'
-      ]
+      presets: [['env', { modules: false }]],
+      plugins: ['external-helpers'],
     }),
-
   ],
 
   sourceMap: 'inline',
