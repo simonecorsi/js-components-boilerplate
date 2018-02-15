@@ -8,7 +8,3 @@ Simple javascript standalone component development boilerplate:
 - Postcss
 - Babel
 - livereload
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKirkhammetz%2Fjs-components-boilerplate.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FKirkhammetz%2Fjs-components-boilerplate?ref=badge_large)
